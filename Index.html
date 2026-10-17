@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Calculator</title>
+<style>
+body{font-family:sans-serif;max-width:320px;margin:20px auto}
+input{width:100%;font-size:32px;text-align:right;padding:10px;box-sizing:border-box}
+.pad{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
+button{font-size:24px;padding:18px}
+.two{grid-column:span 2}
+</style>
+</head>
+<body>
+<input id="d" value="" readonly>
+<div class="pad">
+<button onclick="add('7')">7</button><button onclick="add('8')">8</button><button onclick="add('9')">9</button><button onclick="add('/')">÷</button>
+<button onclick="add('4')">4</button><button onclick="add('5')">5</button><button onclick="add('6')">6</button><button onclick="add('*')">×</button>
+<button onclick="add('1')">1</button><button onclick="add('2')">2</button><button onclick="add('3')">3</button><button onclick="add('-')">−</button>
+<button onclick="add('0')">0</button><button onclick="add('.')">.</button><button onclick="calc()">=</button><button onclick="add('+')">+</button>
+<button class="two" onclick="percent()">%</button><button class="two" onclick="d.value=''">Clear</button>
+</div>
+<script>
+function add(x){ d.value += x }
+function calc(){
+  try { d.value = eval(d.value) } catch(e){ d.value = 'Error' }
+}
+function percent(){
+  try { d.value = eval(d.value) / 100 } catch(e){ d.value = 'Error' }
+}
+</script>
+</body>
+</html>
